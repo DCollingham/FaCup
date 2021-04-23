@@ -16,5 +16,20 @@ namespace FaCup
             List<string> TeamList = File.ReadAllLines(filepath).ToList();
             return TeamList;
         }
+
+
+        public static List<TeamModel> MakeObjectList()
+        {
+            List<TeamModel> output = new List<TeamModel>();
+            List<string> Teams = ReturnTeams();
+
+            foreach (var team in Teams)
+            {
+                TeamModel t = new TeamModel();
+                t.TeamName = team;
+                output.Add(t);
+            }
+            return output;
+        }
     }
 }

@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TeamModel.cs" />
     <EmbeddedResource Include="FaCupDraw.resx">
       <DependentUpon>FaCupDraw.cs</DependentUpon>
     </EmbeddedResource>

@@ -20,13 +20,17 @@ namespace FaCup
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            List<String> TeamList = DataAccess.ReturnTeams();
-            foreach (var team in TeamList)
+            //List<string> TeamList = DataAccess.ReturnTeams();
+            //foreach (var team in TeamList)
+            //{
+            //    rtbTeams.Text += team + "\n";
+            //}
+
+            List<TeamModel> TeamObjectList = DataAccess.MakeObjectList();
+            foreach (var team in TeamObjectList)
             {
-                rtbTeams.Text += team + "\n";
+                rtbTeams.Text += team.TeamName.ToString() + "\n";
             }
         }
-
-
     }
 }
