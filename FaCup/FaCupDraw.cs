@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,19 +19,25 @@ namespace FaCup
             InitializeComponent(); 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
-            //List<string> TeamList = DataAccess.ReturnTeams();
-            //foreach (var team in TeamList)
-            //{
-            //    rtbTeams.Text += team + "\n";
-            //}
+            ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+            var file = new FileInfo(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\FinalTeams.xlsx");
+            List<TeamModel> TeamListFromExcel = await DataAccess.LoadExcelFile(file);
 
             List<TeamModel> TeamObjectList = DataAccess.MakeObjectList();
-            foreach (var team in TeamObjectList)
+            foreach (var team in TeamListFromExcel)
             {
                 rtbTeams.Text += team.TeamName.ToString() + "\n";
             }
+
+
+
         }
+
+
+
+
     }
-}
+    }
+
