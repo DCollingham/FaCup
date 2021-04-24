@@ -16,7 +16,7 @@ namespace FaCup
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FaCupDraw());
+            Application.Run(new MainMenu());
         }
     }
 }

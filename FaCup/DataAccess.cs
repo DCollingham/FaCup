@@ -50,12 +50,15 @@ namespace FaCup
                 {
                     TeamModel t = new TeamModel();
                     t.TeamName = worksheet.Cells[row, col].Value.ToString();
+                    t.LeaugeName = worksheet.Cells[row, col + 1].Value.ToString();
+                    t.LeaugeId = (double)worksheet.Cells[row, col + 2].Value;
+                    t.InCup = (bool)worksheet.Cells[row, col + 3].Value;
                     output.Add(t);
                     row += 1;
                 }
                 return output;
             }
-
+            
         }
     }
 }

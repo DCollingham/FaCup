@@ -12,23 +12,26 @@ using System.Windows.Forms;
 
 namespace FaCup
 {
-    public partial class FaCupDraw : Form
+    public partial class MainMenu : Form
     {
-        public FaCupDraw()
+        public MainMenu()
         {
+            ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+            Image myimage = new Bitmap(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\facupbackground.png");
+            this.BackgroundImage = myimage;
             InitializeComponent(); 
         }
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-            ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+
+
             var file = new FileInfo(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\FinalTeams.xlsx");
             List<TeamModel> TeamListFromExcel = await DataAccess.LoadExcelFile(file);
 
-            List<TeamModel> TeamObjectList = DataAccess.MakeObjectList();
             foreach (var team in TeamListFromExcel)
             {
-                rtbTeams.Text += team.TeamName.ToString() + "\n";
+                rtbTeams.Text += team.TeamName.ToString() + team.InCup.ToString() + "\n";
             }
 
 
