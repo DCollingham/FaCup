@@ -27,20 +27,25 @@ namespace FaCup
 
 
             var file = new FileInfo(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\FinalTeams.xlsx");
-            List<TeamModel> TeamListFromExcel = await DataAccess.LoadExcelFile(file);
-
+            List<TeamModel> TeamListFromExcel = await DataAccess.LoadRemainingTeams(file);
+            
             foreach (var team in TeamListFromExcel)
             {
-                rtbTeams.Text += team.TeamName.ToString() + team.InCup.ToString() + "\n";
+
+                    rtbTeams.Text += team.TeamName.ToString()  + "\n";
+
+        
             }
-
-
 
         }
 
+        private void btnDraw_Click(object sender, EventArgs e)
+        {
+            //this.Hide();
+            Draw draw = new Draw();
+            draw.ShowDialog();
 
-
-
+        }
     }
     }
 
