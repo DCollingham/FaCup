@@ -25,18 +25,6 @@ namespace FaCup
         private async void Form1_Load(object sender, EventArgs e)
         {
 
-
-            var file = new FileInfo(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\FinalTeams.xlsx");
-            List<TeamModel> TeamListFromExcel = await DataAccess.LoadRemainingTeams(file);
-            
-            foreach (var team in TeamListFromExcel)
-            {
-
-                    rtbTeams.Text += team.TeamName.ToString()  + "\n";
-
-        
-            }
-
         }
 
         private void btnDraw_Click(object sender, EventArgs e)

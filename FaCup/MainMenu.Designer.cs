@@ -31,28 +31,19 @@ namespace FaCup
         {
             this.components = new System.ComponentModel.Container();
             this.btnDraw = new System.Windows.Forms.Button();
-            this.rtbTeams = new System.Windows.Forms.RichTextBox();
             this.teamModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.teamModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDraw
             // 
-            this.btnDraw.Location = new System.Drawing.Point(459, 230);
+            this.btnDraw.Location = new System.Drawing.Point(709, 376);
             this.btnDraw.Name = "btnDraw";
-            this.btnDraw.Size = new System.Drawing.Size(122, 23);
+            this.btnDraw.Size = new System.Drawing.Size(132, 58);
             this.btnDraw.TabIndex = 1;
             this.btnDraw.Text = "Fourth Round Draw";
             this.btnDraw.UseVisualStyleBackColor = true;
             this.btnDraw.Click += new System.EventHandler(this.btnDraw_Click);
-            // 
-            // rtbTeams
-            // 
-            this.rtbTeams.Location = new System.Drawing.Point(12, 12);
-            this.rtbTeams.Name = "rtbTeams";
-            this.rtbTeams.Size = new System.Drawing.Size(428, 327);
-            this.rtbTeams.TabIndex = 2;
-            this.rtbTeams.Text = "";
             // 
             // teamModelBindingSource
             // 
@@ -64,7 +55,6 @@ namespace FaCup
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1664, 1011);
-            this.Controls.Add(this.rtbTeams);
             this.Controls.Add(this.btnDraw);
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -77,7 +67,6 @@ namespace FaCup
 
         #endregion
         private System.Windows.Forms.Button btnDraw;
-        private System.Windows.Forms.RichTextBox rtbTeams;
         private System.Windows.Forms.BindingSource teamModelBindingSource;
     }
 }
