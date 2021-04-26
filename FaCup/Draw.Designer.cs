@@ -32,6 +32,7 @@ namespace FaCup
             this.lblFaCup = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtTeamList = new System.Windows.Forms.TextBox();
+            this.btnShuffle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,11 +72,26 @@ namespace FaCup
             this.txtTeamList.Size = new System.Drawing.Size(248, 688);
             this.txtTeamList.TabIndex = 3;
             // 
+            // btnShuffle
+            // 
+            this.btnShuffle.BackColor = System.Drawing.Color.White;
+            this.btnShuffle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShuffle.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShuffle.ForeColor = System.Drawing.Color.DimGray;
+            this.btnShuffle.Location = new System.Drawing.Point(195, 829);
+            this.btnShuffle.Name = "btnShuffle";
+            this.btnShuffle.Size = new System.Drawing.Size(153, 43);
+            this.btnShuffle.TabIndex = 4;
+            this.btnShuffle.Text = "SHUFFLE";
+            this.btnShuffle.UseVisualStyleBackColor = false;
+            this.btnShuffle.Click += new System.EventHandler(this.btnShuffle_Click);
+            // 
             // Draw
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1664, 1011);
+            this.Controls.Add(this.btnShuffle);
             this.Controls.Add(this.txtTeamList);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblFaCup);
@@ -93,5 +109,6 @@ namespace FaCup
         private System.Windows.Forms.Label lblFaCup;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtTeamList;
+        private System.Windows.Forms.Button btnShuffle;
     }
 }

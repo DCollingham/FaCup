@@ -13,5 +13,11 @@ namespace FaCup
         public double LeaugeId { get; set; }
         public bool InCup { get; set; }
         public bool KnockedOut { get; set; }
+
+        public int DrawId { get; set; }
+
+        }
+
     }
-}
+
+

@@ -19,7 +19,7 @@ namespace FaCup
             return TeamList;
         }
 
-        //Turns txt file into objects
+        //Turns txt file into objects #No Longer used
         public static List<TeamModel> MakeObjectList()
         {
             List<TeamModel> output = new List<TeamModel>();

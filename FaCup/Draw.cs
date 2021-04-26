@@ -16,6 +16,7 @@ namespace FaCup
         public Draw()
         {
 
+
             InitializeComponent();
             Image myimage = new Bitmap(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\facupbackground.png");
             this.BackgroundImage = myimage;
@@ -24,19 +25,31 @@ namespace FaCup
         private async void Draw_Load(object sender, EventArgs e)
         {
             txtTeamList.GotFocus += txtTeamList_GotFocus;
-            var file = new FileInfo(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\FinalTeams.xlsx");
-            List<TeamModel> TeamListFromExcel = await DataAccess.LoadRemainingTeams(file);
-
-            foreach(var team in TeamListFromExcel)
-            {
-                txtTeamList.Text += team.TeamName + Environment.NewLine;
-            }
-            
         }
+       
+
+
         //Changes focus away form text box to remove unwanted cursor
         private void txtTeamList_GotFocus(object sender, EventArgs e)
         {
             ((TextBox)sender).Parent.Focus();
+        }
+
+        private async void btnShuffle_Click(object sender, EventArgs e)
+        {
+            txtTeamList.Text = null;
+            var file = new FileInfo(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\FinalTeams.xlsx");
+            List<TeamModel> TeamListFromExcel = await DataAccess.LoadRemainingTeams(file);
+            TeamListFromExcel.ShuffleTeams();
+            int counter = 1;
+
+            foreach (var team in TeamListFromExcel)
+            {
+                team.DrawId = counter;
+                txtTeamList.Text += counter +") " + team.TeamName +  Environment.NewLine;
+                counter++;
+            }
+            
         }
     }
 }
