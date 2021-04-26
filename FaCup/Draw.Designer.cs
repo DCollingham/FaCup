@@ -33,6 +33,8 @@ namespace FaCup
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtTeamList = new System.Windows.Forms.TextBox();
             this.btnShuffle = new System.Windows.Forms.Button();
+            this.lblTeam1 = new System.Windows.Forms.Label();
+            this.btnDrawTeams = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,11 +88,32 @@ namespace FaCup
             this.btnShuffle.UseVisualStyleBackColor = false;
             this.btnShuffle.Click += new System.EventHandler(this.btnShuffle_Click);
             // 
+            // lblTeam1
+            // 
+            this.lblTeam1.AutoSize = true;
+            this.lblTeam1.Location = new System.Drawing.Point(865, 235);
+            this.lblTeam1.Name = "lblTeam1";
+            this.lblTeam1.Size = new System.Drawing.Size(35, 13);
+            this.lblTeam1.TabIndex = 5;
+            this.lblTeam1.Text = "label1";
+            // 
+            // btnDrawTeams
+            // 
+            this.btnDrawTeams.Location = new System.Drawing.Point(1039, 843);
+            this.btnDrawTeams.Name = "btnDrawTeams";
+            this.btnDrawTeams.Size = new System.Drawing.Size(75, 23);
+            this.btnDrawTeams.TabIndex = 6;
+            this.btnDrawTeams.Text = "Draw Teams";
+            this.btnDrawTeams.UseVisualStyleBackColor = true;
+            this.btnDrawTeams.Click += new System.EventHandler(this.btnDrawTeams_Click);
+            // 
             // Draw
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1664, 1011);
+            this.Controls.Add(this.btnDrawTeams);
+            this.Controls.Add(this.lblTeam1);
             this.Controls.Add(this.btnShuffle);
             this.Controls.Add(this.txtTeamList);
             this.Controls.Add(this.pictureBox1);
@@ -110,5 +133,7 @@ namespace FaCup
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtTeamList;
         private System.Windows.Forms.Button btnShuffle;
+        private System.Windows.Forms.Label lblTeam1;
+        private System.Windows.Forms.Button btnDrawTeams;
     }
 }

@@ -15,8 +15,6 @@ namespace FaCup
     {
         public Draw()
         {
-
-
             InitializeComponent();
             Image myimage = new Bitmap(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\facupbackground.png");
             this.BackgroundImage = myimage;
@@ -34,22 +32,33 @@ namespace FaCup
         {
             ((TextBox)sender).Parent.Focus();
         }
-
+        //Testing shuffle button
         private async void btnShuffle_Click(object sender, EventArgs e)
         {
             txtTeamList.Text = null;
             var file = new FileInfo(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\FinalTeams.xlsx");
-            List<TeamModel> TeamListFromExcel = await DataAccess.LoadRemainingTeams(file);
-            TeamListFromExcel.ShuffleTeams();
+            TeamModel.TeamList = await DataAccess.LoadRemainingTeams(file);
+            TeamModel.TeamList.ShuffleTeams();
             int counter = 1;
 
-            foreach (var team in TeamListFromExcel)
+            foreach (var team in TeamModel.TeamList)
             {
                 team.DrawId = counter;
                 txtTeamList.Text += counter +") " + team.TeamName +  Environment.NewLine;
                 counter++;
             }
             
+        }
+        //Testing
+        private void btnDrawTeams_Click(object sender, EventArgs e)
+        {
+            foreach (var item in TeamModel.TeamList)
+            {
+                if(item.TeamName == "Manchester United")
+                {
+                    lblTeam1.Text = item.LeaugeName;
+                }    
+            }
         }
     }
 }

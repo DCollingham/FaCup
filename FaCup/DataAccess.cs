@@ -87,7 +87,8 @@ namespace FaCup
                         t.LeaugeId = (double)worksheet.Cells[row, col + 2].Value;
                         t.InCup = (bool)worksheet.Cells[row, col + 3].Value;
                         t.KnockedOut = (bool)worksheet.Cells[row, col + 4].Value;
-                        output.Add(t);          
+                        output.Add(t);
+                        
                     }
                     row += 1;
                 }
