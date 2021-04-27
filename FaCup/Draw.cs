@@ -13,20 +13,48 @@ namespace FaCup
 {
     public partial class Draw : Form
     {
+        int TeamIndexer = 0;
+
         public Draw()
         {
             InitializeComponent();
             Image myimage = new Bitmap(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\facupbackground.png");
-            this.BackgroundImage = myimage;
+            this.BackgroundImage = myimage; 
         }
+
+
+
+        private void LoopLabels()
+        {
+            var random = new Random();
+            int index = random.Next(TeamModel.TeamList.Count);
+            List<Label> TeamLabels = GetTeamLabels();
+            TeamLabels[TeamIndexer].Text = TeamModel.TeamList[TeamIndexer].TeamName;
+            TeamIndexer++;
+
+        }
+        //Returns a list with the tag LabelTeams
+        private List<Label> GetTeamLabels()
+        {
+            List<Label> lbls = this.Controls.OfType<Label>().ToList();
+            List<Label> TeamLabels = new List<Label>();
+            foreach (var label in lbls)
+            {
+                if (label.Tag != null && label.Tag.ToString() == "LabelTeams")
+                {
+                    TeamLabels.Add(label);
+                }
+            }
+            return TeamLabels;
+        }
+
 
         private void Draw_Load(object sender, EventArgs e)
         {
             DataAccess.LoadsTeamList();
             txtTeamList.GotFocus += txtTeamList_GotFocus;
-        }
-       
 
+        }
 
         //Changes focus away form text box to remove unwanted cursor
         private void txtTeamList_GotFocus(object sender, EventArgs e)
@@ -35,7 +63,7 @@ namespace FaCup
         }
 
         //Testing shuffle button
-        private async void btnShuffle_Click(object sender, EventArgs e)
+        private void btnShuffle_Click(object sender, EventArgs e)
         {
             txtTeamList.Text = null;
             TeamModel.TeamList.ShuffleTeams();
@@ -53,15 +81,7 @@ namespace FaCup
         //Testing Randomising a single team
         private void btnDrawTeams_Click(object sender, EventArgs e)
         {
-            var TeamDrawIdList = Shuffle.TeamDrawList(TeamModel.TeamList);
-
-            foreach (Control x in this.Controls)
-            {
-                if((string)x.Tag == "LabelTeams")
-                {
-                    x.Text = "Test";
-                }
-            }
+            LoopLabels(); 
         }
     }
 }
