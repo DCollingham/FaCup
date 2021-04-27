@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 namespace FaCup
 {
-    class TeamModel
+    public class TeamModel
     {
         public string TeamName { get; set; }
         public string LeaugeName { get; set; }
         public double LeaugeId { get; set; }
         public bool InCup { get; set; }
         public bool KnockedOut { get; set; }
-
         public int DrawId { get; set; }
         public static List<TeamModel> TeamList { get; set; }
-
     }
 
     }

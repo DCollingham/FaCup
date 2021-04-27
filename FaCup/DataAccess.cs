@@ -10,28 +10,11 @@ namespace FaCup
 {
     class DataAccess
     {
-        //Reads a small team list from a txt file
-        public static List<string> ReturnTeams()
-        {
-            //Make relative path later
-            string filepath = @"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\Last64Teams.txt";
-            List<string> TeamList = File.ReadAllLines(filepath).ToList();
-            return TeamList;
-        }
 
-        //Turns txt file into objects #No Longer used
-        public static List<TeamModel> MakeObjectList()
+        public static async void LoadsTeamList()
         {
-            List<TeamModel> output = new List<TeamModel>();
-            List<string> Teams = ReturnTeams();
-
-            foreach (var team in Teams)
-            {
-                TeamModel t = new TeamModel();
-                t.TeamName = team;
-                output.Add(t);
-            }
-            return output;
+            var file = new FileInfo(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\FinalTeams.xlsx");
+            TeamModel.TeamList = await DataAccess.LoadRemainingTeams(file);
         }
 
 
@@ -96,7 +79,7 @@ namespace FaCup
 
             }
 
-
+            
 
 
         }

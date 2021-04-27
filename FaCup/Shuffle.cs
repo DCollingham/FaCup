@@ -24,5 +24,13 @@ namespace FaCup
                 list[n] = value;
             }
         }
+
+        public static List<int> TeamDrawList(List<TeamModel> argTeamList) 
+        {  
+            int lenght = argTeamList.Count();
+            var output = Enumerable.Range(1, lenght).ToList();
+            return output;
+        }
     }
+
 }

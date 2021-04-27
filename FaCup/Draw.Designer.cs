@@ -35,6 +35,8 @@ namespace FaCup
             this.btnShuffle = new System.Windows.Forms.Button();
             this.lblTeam1 = new System.Windows.Forms.Label();
             this.btnDrawTeams = new System.Windows.Forms.Button();
+            this.lblTeam2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,18 +86,21 @@ namespace FaCup
             this.btnShuffle.Name = "btnShuffle";
             this.btnShuffle.Size = new System.Drawing.Size(153, 43);
             this.btnShuffle.TabIndex = 4;
-            this.btnShuffle.Text = "SHUFFLE";
+            this.btnShuffle.Text = "LOAD TEAMS";
             this.btnShuffle.UseVisualStyleBackColor = false;
             this.btnShuffle.Click += new System.EventHandler(this.btnShuffle_Click);
             // 
             // lblTeam1
             // 
-            this.lblTeam1.AutoSize = true;
-            this.lblTeam1.Location = new System.Drawing.Point(865, 235);
+            this.lblTeam1.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTeam1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblTeam1.Location = new System.Drawing.Point(714, 243);
             this.lblTeam1.Name = "lblTeam1";
-            this.lblTeam1.Size = new System.Drawing.Size(35, 13);
+            this.lblTeam1.Size = new System.Drawing.Size(332, 41);
             this.lblTeam1.TabIndex = 5;
-            this.lblTeam1.Text = "label1";
+            this.lblTeam1.Tag = "LabelTeams";
+            this.lblTeam1.Text = "WOLVERHAMPTON WONDERERS";
+            this.lblTeam1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnDrawTeams
             // 
@@ -107,11 +112,37 @@ namespace FaCup
             this.btnDrawTeams.UseVisualStyleBackColor = true;
             this.btnDrawTeams.Click += new System.EventHandler(this.btnDrawTeams_Click);
             // 
+            // lblTeam2
+            // 
+            this.lblTeam2.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTeam2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblTeam2.Location = new System.Drawing.Point(1090, 243);
+            this.lblTeam2.Name = "lblTeam2";
+            this.lblTeam2.Size = new System.Drawing.Size(332, 41);
+            this.lblTeam2.TabIndex = 7;
+            this.lblTeam2.Tag = "LabelTeams";
+            this.lblTeam2.Text = "MANCHESTER UNITED";
+            this.lblTeam2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label1.Font = new System.Drawing.Font("Open Sans", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(1043, 243);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 41);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "V";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Draw
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1664, 1011);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblTeam2);
             this.Controls.Add(this.btnDrawTeams);
             this.Controls.Add(this.lblTeam1);
             this.Controls.Add(this.btnShuffle);
@@ -135,5 +166,7 @@ namespace FaCup
         private System.Windows.Forms.Button btnShuffle;
         private System.Windows.Forms.Label lblTeam1;
         private System.Windows.Forms.Button btnDrawTeams;
+        private System.Windows.Forms.Label lblTeam2;
+        private System.Windows.Forms.Label label1;
     }
 }

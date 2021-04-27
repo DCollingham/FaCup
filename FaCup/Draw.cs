@@ -20,8 +20,9 @@ namespace FaCup
             this.BackgroundImage = myimage;
         }
 
-        private async void Draw_Load(object sender, EventArgs e)
+        private void Draw_Load(object sender, EventArgs e)
         {
+            DataAccess.LoadsTeamList();
             txtTeamList.GotFocus += txtTeamList_GotFocus;
         }
        
@@ -32,13 +33,13 @@ namespace FaCup
         {
             ((TextBox)sender).Parent.Focus();
         }
+
         //Testing shuffle button
         private async void btnShuffle_Click(object sender, EventArgs e)
         {
             txtTeamList.Text = null;
-            var file = new FileInfo(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\FinalTeams.xlsx");
-            TeamModel.TeamList = await DataAccess.LoadRemainingTeams(file);
             TeamModel.TeamList.ShuffleTeams();
+            btnShuffle.Text = "SHUFFLE";
             int counter = 1;
 
             foreach (var team in TeamModel.TeamList)
@@ -49,15 +50,17 @@ namespace FaCup
             }
             
         }
-        //Testing
+        //Testing Randomising a single team
         private void btnDrawTeams_Click(object sender, EventArgs e)
         {
-            foreach (var item in TeamModel.TeamList)
+            var TeamDrawIdList = Shuffle.TeamDrawList(TeamModel.TeamList);
+
+            foreach (Control x in this.Controls)
             {
-                if(item.TeamName == "Manchester United")
+                if((string)x.Tag == "LabelTeams")
                 {
-                    lblTeam1.Text = item.LeaugeName;
-                }    
+                    x.Text = "Test";
+                }
             }
         }
     }
