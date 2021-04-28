@@ -14,25 +14,64 @@ namespace FaCup
     public partial class Draw : Form
     {
         int TeamIndexer = 0;
+        List<int> DrawNumbers = new List<int>();
 
         public Draw()
         {
             InitializeComponent();
+
+            lbInfolLeauge.Text = "";
+            lblInfoClub.Text = "";
+            lblInfoLevel.Text = "";
+            lblInfoNumber.Text = "";
             Image myimage = new Bitmap(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\facupbackground.png");
             this.BackgroundImage = myimage; 
         }
+        //Populates a list with integers in range of 1 to list size
+        private void PopList()
+        {
+            for (int i = 0; i < 32; i++)
+            {
+                DrawNumbers.Add(i);
+            }
+        }
 
-
+        private int GetRandomNumber()
+        {
+            var random = new Random();
+            int randomindex = random.Next(DrawNumbers.Count);
+            int rndnumber = DrawNumbers[randomindex];
+            DrawNumbers.RemoveAt(randomindex);
+            return rndnumber;
+        }
 
         private void LoopLabels()
         {
-            var random = new Random();
-            int index = random.Next(TeamModel.TeamList.Count);
+            int test = GetRandomNumber();
+            lblTest2.Text = test.ToString();
             List<Label> TeamLabels = GetTeamLabels();
-            TeamLabels[TeamIndexer].Text = TeamModel.TeamList[TeamIndexer].TeamName;
+            //Loops through Labels to display Team Name
+            TeamLabels[TeamIndexer].Text = TeamModel.TeamList[test].TeamName;
+            DisplayInfoBox(test);
             TeamIndexer++;
+            lblTest.Text = DrawNumbers.Count().ToString();
 
+            if(TeamIndexer == 16)
+            {
+                TeamIndexer = 0;
+
+            }
         }
+
+        private void DisplayInfoBox(int TeamIndexer)
+        {
+            lbInfolLeauge.Text = "League: " + TeamModel.TeamList[TeamIndexer].LeaugeName;
+            lblInfoClub.Text = "Club: " + TeamModel.TeamList[TeamIndexer].TeamName;
+            lblInfoLevel.Text = "Club Level: " + TeamModel.TeamList[TeamIndexer].LeaugeId.ToString();
+            lblInfoNumber.Text = "Drawn Number: " + TeamModel.TeamList[TeamIndexer].DrawId.ToString();
+        }
+
+
         //Returns a list with the tag LabelTeams
         private List<Label> GetTeamLabels()
         {
@@ -54,7 +93,7 @@ namespace FaCup
         {
             DataAccess.LoadsTeamList();
             txtTeamList.GotFocus += txtTeamList_GotFocus;
-
+            PopList();
         }
 
         //Changes focus away form text box to remove unwanted cursor
