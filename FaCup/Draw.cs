@@ -45,6 +45,7 @@ namespace FaCup
                     TeamLabels.Add(label);
                 }
             }
+            TeamLabels.Reverse();
             return TeamLabels;
         }
 
