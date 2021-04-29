@@ -13,20 +13,16 @@ namespace FaCup
 {
     public partial class Draw : Form
     {
-        int TeamIndexer = 0;
+        int LabelIndex = 0;
         List<int> DrawNumbers = new List<int>();
-
         public Draw()
         {
             InitializeComponent();
-
-            lbInfolLeauge.Text = "";
-            lblInfoClub.Text = "";
-            lblInfoLevel.Text = "";
-            lblInfoNumber.Text = "";
+            ClearInfoBox();
             Image myimage = new Bitmap(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\facupbackground.png");
             this.BackgroundImage = myimage; 
         }
+
         //Populates a list with integers in range of 1 to list size
         private void PopList()
         {
@@ -36,7 +32,7 @@ namespace FaCup
             }
         }
 
-        private int GetRandomNumber()
+        private int GetDrawId()
         {
             var random = new Random();
             int randomindex = random.Next(DrawNumbers.Count);
@@ -45,34 +41,26 @@ namespace FaCup
             return rndnumber;
         }
 
-        private void LoopLabels()
+        private void DisplayClubOnLabel()
         {
-            int test = GetRandomNumber();
-            lblTest2.Text = test.ToString();
+            int index = GetDrawId();
             List<Label> TeamLabels = GetTeamLabels();
             //Loops through Labels to display Team Name
-            TeamLabels[TeamIndexer].Text = TeamModel.TeamList[test].TeamName;
-            DisplayInfoBox(test);
-            TeamIndexer++;
-            lblTest.Text = DrawNumbers.Count().ToString();
-
-            if(TeamIndexer == 16)
-            {
-                TeamIndexer = 0;
-
-            }
+            TeamLabels[LabelIndex].Text = TeamModel.TeamList[index].TeamName.ToUpper();
+            DisplayInfoBox(index);
+            LabelIndex++;
         }
 
-        private void DisplayInfoBox(int TeamIndexer)
+        private void DisplayInfoBox(int index)
         {
-            lbInfolLeauge.Text = "League: " + TeamModel.TeamList[TeamIndexer].LeaugeName;
-            lblInfoClub.Text = "Club: " + TeamModel.TeamList[TeamIndexer].TeamName;
-            lblInfoLevel.Text = "Club Level: " + TeamModel.TeamList[TeamIndexer].LeaugeId.ToString();
-            lblInfoNumber.Text = "Drawn Number: " + TeamModel.TeamList[TeamIndexer].DrawId.ToString();
+            lbInfolLeauge.Text = "League: " + TeamModel.TeamList[index].LeaugeName;
+            lblInfoClub.Text = "Club: " + TeamModel.TeamList[index].TeamName;
+            lblInfoLevel.Text = "Club Level: " + TeamModel.TeamList[index].LeaugeId.ToString();
+            lblInfoNumber.Text = "Drawn Number: " + TeamModel.TeamList[index].DrawId.ToString();
         }
 
 
-        //Returns a list with the tag LabelTeams
+        //Returns a list with the tag 'LabelTeams'
         private List<Label> GetTeamLabels()
         {
             List<Label> lbls = this.Controls.OfType<Label>().ToList();
@@ -96,32 +84,72 @@ namespace FaCup
             PopList();
         }
 
-        //Changes focus away form text box to remove unwanted cursor
+        //Changes focus away form text box to remove unwanted blinking cursor
         private void txtTeamList_GotFocus(object sender, EventArgs e)
         {
             ((TextBox)sender).Parent.Focus();
         }
 
-        //Testing shuffle button
+        //Displays and shuffles teams
         private void btnShuffle_Click(object sender, EventArgs e)
         {
             txtTeamList.Text = null;
             TeamModel.TeamList.ShuffleTeams();
             btnShuffle.Text = "SHUFFLE";
-            int counter = 1;
+            DisplayTeamsLeft();
+            btnDrawTeams.Enabled = true;
+        }
+        //Calls method to draw team
+        private void btnDrawTeams_Click(object sender, EventArgs e)
+        {
+            DisplayBoard();
+            btnShuffle.Enabled = false;
+        }
 
+        private void DisplayBoard()
+        {
+            switch (LabelIndex)
+            {
+                case 15:
+                    btnDrawTeams.Text = "Clear";
+                    DisplayClubOnLabel();
+                    break;
+                case 16:
+                    var newlabel = GetTeamLabels();
+                    foreach (var label in newlabel)
+                    {
+                        label.Text = null;
+                    }
+                    LabelIndex = 0;
+                    btnDrawTeams.Text = "Draw Team";
+                    break;
+
+
+                default:
+                    DisplayClubOnLabel();
+                    break;
+            }
+            //DisplyTeam();
+        }
+
+        //Assigns the clubs a DrawId and displays then in the left text box
+        private void DisplayTeamsLeft()
+        {
+            int counter = 1;
             foreach (var team in TeamModel.TeamList)
             {
                 team.DrawId = counter;
-                txtTeamList.Text += counter +") " + team.TeamName +  Environment.NewLine;
+                txtTeamList.Text += counter + ") " + team.TeamName + Environment.NewLine;
                 counter++;
             }
-            
         }
-        //Testing Randomising a single team
-        private void btnDrawTeams_Click(object sender, EventArgs e)
+        private void ClearInfoBox()
         {
-            LoopLabels(); 
+            lbInfolLeauge.Text = "";
+            lblInfoClub.Text = "";
+            lblInfoLevel.Text = "";
+            lblInfoNumber.Text = "";
         }
+
     }
 }

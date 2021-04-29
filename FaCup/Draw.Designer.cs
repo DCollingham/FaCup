@@ -34,7 +34,6 @@ namespace FaCup
             this.txtTeamList = new System.Windows.Forms.TextBox();
             this.btnShuffle = new System.Windows.Forms.Button();
             this.lblTeam1 = new System.Windows.Forms.Label();
-            this.btnDrawTeams = new System.Windows.Forms.Button();
             this.lblTeam2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,8 +64,7 @@ namespace FaCup
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblInfoTitle = new System.Windows.Forms.Label();
-            this.lblTest = new System.Windows.Forms.Label();
-            this.lblTest2 = new System.Windows.Forms.Label();
+            this.btnDrawTeams = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -132,16 +130,6 @@ namespace FaCup
             this.lblTeam1.TabIndex = 5;
             this.lblTeam1.Tag = "LabelTeams";
             this.lblTeam1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnDrawTeams
-            // 
-            this.btnDrawTeams.Location = new System.Drawing.Point(1039, 843);
-            this.btnDrawTeams.Name = "btnDrawTeams";
-            this.btnDrawTeams.Size = new System.Drawing.Size(75, 23);
-            this.btnDrawTeams.TabIndex = 6;
-            this.btnDrawTeams.Text = "Draw Teams";
-            this.btnDrawTeams.UseVisualStyleBackColor = true;
-            this.btnDrawTeams.Click += new System.EventHandler(this.btnDrawTeams_Click);
             // 
             // lblTeam2
             // 
@@ -482,31 +470,25 @@ namespace FaCup
             this.lblInfoTitle.Text = "TEAM INFOMATION";
             this.lblInfoTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblTest
+            // btnDrawTeams
             // 
-            this.lblTest.AutoSize = true;
-            this.lblTest.Location = new System.Drawing.Point(665, 658);
-            this.lblTest.Name = "lblTest";
-            this.lblTest.Size = new System.Drawing.Size(35, 13);
-            this.lblTest.TabIndex = 37;
-            this.lblTest.Text = "label5";
-            // 
-            // lblTest2
-            // 
-            this.lblTest2.AutoSize = true;
-            this.lblTest2.Location = new System.Drawing.Point(667, 695);
-            this.lblTest2.Name = "lblTest2";
-            this.lblTest2.Size = new System.Drawing.Size(35, 13);
-            this.lblTest2.TabIndex = 38;
-            this.lblTest2.Text = "label5";
+            this.btnDrawTeams.BackColor = System.Drawing.Color.White;
+            this.btnDrawTeams.Enabled = false;
+            this.btnDrawTeams.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDrawTeams.ForeColor = System.Drawing.Color.DimGray;
+            this.btnDrawTeams.Location = new System.Drawing.Point(1020, 829);
+            this.btnDrawTeams.Name = "btnDrawTeams";
+            this.btnDrawTeams.Size = new System.Drawing.Size(153, 43);
+            this.btnDrawTeams.TabIndex = 6;
+            this.btnDrawTeams.Text = "Draw Team";
+            this.btnDrawTeams.UseVisualStyleBackColor = false;
+            this.btnDrawTeams.Click += new System.EventHandler(this.btnDrawTeams_Click);
             // 
             // Draw
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1664, 1011);
-            this.Controls.Add(this.lblTest2);
-            this.Controls.Add(this.lblTest);
             this.Controls.Add(this.lblInfoTitle);
             this.Controls.Add(this.lblInfoLevel);
             this.Controls.Add(this.lblInfoNumber);
@@ -561,7 +543,6 @@ namespace FaCup
         private System.Windows.Forms.TextBox txtTeamList;
         private System.Windows.Forms.Button btnShuffle;
         private System.Windows.Forms.Label lblTeam1;
-        private System.Windows.Forms.Button btnDrawTeams;
         private System.Windows.Forms.Label lblTeam2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -592,7 +573,6 @@ namespace FaCup
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lblInfoTitle;
-        private System.Windows.Forms.Label lblTest;
-        private System.Windows.Forms.Label lblTest2;
+        private System.Windows.Forms.Button btnDrawTeams;
     }
 }
