@@ -469,6 +469,7 @@ namespace FaCup
             this.lblInfoTitle.TabIndex = 36;
             this.lblInfoTitle.Text = "TEAM INFOMATION";
             this.lblInfoTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
             // 
             // btnDrawTeams
             // 

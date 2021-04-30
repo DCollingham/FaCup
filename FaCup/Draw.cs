@@ -15,6 +15,7 @@ namespace FaCup
     {
         int LabelIndex = 0;
         List<int> DrawNumbers = new List<int>();
+        List<string> Fixtures = new List<string>();
         public Draw()
         {
             InitializeComponent();
@@ -32,22 +33,23 @@ namespace FaCup
             }
         }
 
-        private int GetDrawId()
-        {
-            var random = new Random();
-            int randomindex = random.Next(DrawNumbers.Count);
-            int rndnumber = DrawNumbers[randomindex];
-            DrawNumbers.RemoveAt(randomindex);
-            return rndnumber;
-        }
+        //private int GetDrawId()
+        //{
+        //    var random = new Random();
+        //    int randomindex = random.Next(DrawNumbers.Count);
+        //    int rndnumber = DrawNumbers[randomindex];
+        //    DrawNumbers.RemoveAt(randomindex);
+        //    return rndnumber;
+        //}
 
         private void DisplayClubOnLabel()
         {
-            int index = GetDrawId();
+            int index = Utility.GetDrawId(DrawNumbers);
             List<Label> TeamLabels = GetTeamLabels();
             //Loops through Labels to display Team Name
             TeamLabels[LabelIndex].Text = TeamModel.TeamList[index].TeamName.ToUpper();
             DisplayInfoBox(index);
+            SaveFixture(index);
             LabelIndex++;
         }
 
@@ -57,6 +59,11 @@ namespace FaCup
             lblInfoClub.Text = "Club: " + TeamModel.TeamList[index].TeamName;
             lblInfoLevel.Text = "Club Level: " + TeamModel.TeamList[index].LeaugeId.ToString();
             lblInfoNumber.Text = "Drawn Number: " + TeamModel.TeamList[index].DrawId.ToString();
+        }
+
+        private void SaveFixture(int index)
+        {
+            Fixtures.Add(TeamModel.TeamList[index].TeamName);
         }
 
 
@@ -104,6 +111,11 @@ namespace FaCup
         {
             DisplayBoard();
             btnShuffle.Enabled = false;
+            if(DrawNumbers.Count() == 0)
+            {
+                btnDrawTeams.Text = "Save";
+                Utility.FixtureToFile(Fixtures);
+            }
         }
 
         private void DisplayBoard()
@@ -129,7 +141,6 @@ namespace FaCup
                     DisplayClubOnLabel();
                     break;
             }
-            //DisplyTeam();
         }
 
         //Assigns the clubs a DrawId and displays then in the left text box
@@ -150,6 +161,7 @@ namespace FaCup
             lblInfoLevel.Text = "";
             lblInfoNumber.Text = "";
         }
+
 
     }
 }
