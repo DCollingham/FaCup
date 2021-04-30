@@ -65,6 +65,7 @@ namespace FaCup
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblInfoTitle = new System.Windows.Forms.Label();
             this.btnDrawTeams = new System.Windows.Forms.Button();
+            this.lblTeamsRemaining = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -467,9 +468,8 @@ namespace FaCup
             this.lblInfoTitle.Name = "lblInfoTitle";
             this.lblInfoTitle.Size = new System.Drawing.Size(308, 40);
             this.lblInfoTitle.TabIndex = 36;
-            this.lblInfoTitle.Text = "TEAM INFOMATION";
+            this.lblInfoTitle.Text = "TEAM INFORMATION";
             this.lblInfoTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
             // 
             // btnDrawTeams
             // 
@@ -485,11 +485,24 @@ namespace FaCup
             this.btnDrawTeams.UseVisualStyleBackColor = false;
             this.btnDrawTeams.Click += new System.EventHandler(this.btnDrawTeams_Click);
             // 
+            // lblTeamsRemaining
+            // 
+            this.lblTeamsRemaining.BackColor = System.Drawing.Color.Transparent;
+            this.lblTeamsRemaining.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTeamsRemaining.ForeColor = System.Drawing.Color.White;
+            this.lblTeamsRemaining.Location = new System.Drawing.Point(120, 73);
+            this.lblTeamsRemaining.Name = "lblTeamsRemaining";
+            this.lblTeamsRemaining.Size = new System.Drawing.Size(308, 40);
+            this.lblTeamsRemaining.TabIndex = 37;
+            this.lblTeamsRemaining.Text = "TEAMS REMAINING";
+            this.lblTeamsRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Draw
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1664, 1011);
+            this.Controls.Add(this.lblTeamsRemaining);
             this.Controls.Add(this.lblInfoTitle);
             this.Controls.Add(this.lblInfoLevel);
             this.Controls.Add(this.lblInfoNumber);
@@ -575,5 +588,6 @@ namespace FaCup
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lblInfoTitle;
         private System.Windows.Forms.Button btnDrawTeams;
+        private System.Windows.Forms.Label lblTeamsRemaining;
     }
 }

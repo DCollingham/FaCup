@@ -33,14 +33,6 @@ namespace FaCup
             }
         }
 
-        //private int GetDrawId()
-        //{
-        //    var random = new Random();
-        //    int randomindex = random.Next(DrawNumbers.Count);
-        //    int rndnumber = DrawNumbers[randomindex];
-        //    DrawNumbers.RemoveAt(randomindex);
-        //    return rndnumber;
-        //}
 
         private void DisplayClubOnLabel()
         {
@@ -115,6 +107,12 @@ namespace FaCup
             {
                 btnDrawTeams.Text = "Save";
                 Utility.FixtureToFile(Fixtures);
+                
+
+            }
+            if(btnDrawTeams.Text == "Save")
+            {
+                Reset();
             }
         }
 
@@ -162,6 +160,25 @@ namespace FaCup
             lblInfoNumber.Text = "";
         }
 
+        private void Reset()
+
+        {
+            var newlabel = GetTeamLabels();
+            foreach (var label in newlabel)
+            {
+                label.Text = null;
+            }
+            ClearInfoBox();
+            DrawNumbers.Clear();
+            Fixtures.Clear();
+            txtTeamList.Text = null;
+            LabelIndex = 0;
+            PopList();
+            btnShuffle.Enabled = true;
+            btnDrawTeams.Text = "Draw Team";
+            btnDrawTeams.Enabled = false;
+
+        }
 
     }
 }
