@@ -4,11 +4,13 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FaCup
 {
     class Utility
     {
+        //Saves fixtures to MyDocs
         public static void FixtureToFile(List<string> ArgFixtureList)
         {
             int lenght = ArgFixtureList.Count();
@@ -19,9 +21,10 @@ namespace FaCup
                 {
                     outputFile.WriteLine(ArgFixtureList[i] + " vs " + ArgFixtureList[i + 1]);
                 }
+            MessageBox.Show($@"Fixtures saved to: {docPath}\Fixtures.txt");
 
         }
-
+        //Gets list lenght, finds value at random index
         public static int GetDrawId(List<int>ArgDrawNumbers)
         {
             var random = new Random();

@@ -10,10 +10,11 @@ namespace FaCup
 {
     class DataAccess
     {
-
+        //This could be removed however there is a problem with calling the larger method in the form
+        //cause by async method
         public static async void LoadsTeamList()
         {
-            var file = new FileInfo(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\FinalTeams.xlsx");
+            var file = new FileInfo(@".\Resources\FinalTeams.xlsx");
             TeamModel.TeamList = await DataAccess.LoadRemainingTeams(file);
         }
 
@@ -62,6 +63,7 @@ namespace FaCup
                 //Checks whether row & column are not null, convert to string if not null
                 while (string.IsNullOrWhiteSpace(worksheet.Cells[row, col].Value?.ToString()) == false)
                 {
+                    //Checks the fouth column 'Knocked Out' (Only last 32 Teams not knocked out)
                     if(worksheet.Cells[row, col + 4].Value.ToString().ToLower() == "false")
                     {   
                         TeamModel t = new TeamModel();

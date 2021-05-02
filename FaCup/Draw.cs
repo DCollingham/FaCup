@@ -16,11 +16,12 @@ namespace FaCup
         int LabelIndex = 0;
         List<int> DrawNumbers = new List<int>();
         List<string> Fixtures = new List<string>();
+        bool DrawComplete = false;
         public Draw()
         {
             InitializeComponent();
             ClearInfoBox();
-            Image myimage = new Bitmap(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\facupbackground.png");
+            Image myimage = new Bitmap(@".\Resources\facupbackground.png");
             this.BackgroundImage = myimage; 
         }
 
@@ -101,23 +102,25 @@ namespace FaCup
         //Calls method to draw team
         private void btnDrawTeams_Click(object sender, EventArgs e)
         {
+
             DisplayBoard();
             btnShuffle.Enabled = false;
             if(DrawNumbers.Count() == 0)
             {
                 btnDrawTeams.Text = "Save";
                 Utility.FixtureToFile(Fixtures);
-                
+                DrawComplete = true;
 
             }
-            if(btnDrawTeams.Text == "Save")
-            {
-                Reset();
-            }
+
         }
 
         private void DisplayBoard()
         {
+            if (DrawComplete == false)
+            {
+
+   
             switch (LabelIndex)
             {
                 case 15:
@@ -139,6 +142,7 @@ namespace FaCup
                     DisplayClubOnLabel();
                     break;
             }
+            }
         }
 
         //Assigns the clubs a DrawId and displays then in the left text box
@@ -158,26 +162,6 @@ namespace FaCup
             lblInfoClub.Text = "";
             lblInfoLevel.Text = "";
             lblInfoNumber.Text = "";
-        }
-
-        private void Reset()
-
-        {
-            var newlabel = GetTeamLabels();
-            foreach (var label in newlabel)
-            {
-                label.Text = null;
-            }
-            ClearInfoBox();
-            DrawNumbers.Clear();
-            Fixtures.Clear();
-            txtTeamList.Text = null;
-            LabelIndex = 0;
-            PopList();
-            btnShuffle.Enabled = true;
-            btnDrawTeams.Text = "Draw Team";
-            btnDrawTeams.Enabled = false;
-
         }
 
     }

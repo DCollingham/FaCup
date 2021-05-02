@@ -17,7 +17,7 @@ namespace FaCup
         public MainMenu()
         {
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
-            Image myimage = new Bitmap(@"C:\Users\darkx\source\repos\FaCup\FaCup\Resources\facupbackground.png");
+            Image myimage = new Bitmap(@".\Resources\facupbackground.png");
             this.BackgroundImage = myimage;
             InitializeComponent(); 
         }
