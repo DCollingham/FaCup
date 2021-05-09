@@ -5,17 +5,32 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FaCup
 {
-    class DataAccess
+    public static class DataAccess
     {
+        //This is work-around for the method below not being able to return a bool due to async method type
+        public static bool FileFound = false;
+
         //This could be removed however there is a problem with calling the larger method in the form
-        //cause by async method
+        //caused by async method type
         public static async void LoadsTeamList()
         {
             var file = new FileInfo(@".\Resources\FinalTeams.xlsx");
-            TeamModel.TeamList = await DataAccess.LoadRemainingTeams(file);
+
+            if (File.Exists(file.ToString()))
+
+            { 
+                TeamModel.TeamList = await DataAccess.LoadRemainingTeams(file);
+                FileFound = true;
+            }
+            else
+            {
+                MessageBox.Show($"Error: {file} cound not be found!");
+            }
+
         }
 
 

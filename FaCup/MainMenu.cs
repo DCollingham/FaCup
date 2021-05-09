@@ -17,10 +17,22 @@ namespace FaCup
         public MainMenu()
         {
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+            InitializeComponent();
+
+            //Checks if background file exists. #Add optimisation so this check only happens once.
             Image myimage = new Bitmap(@".\Resources\facupbackground.png");
-            this.BackgroundImage = myimage;
-            InitializeComponent(); 
-        }
+            if (File.Exists(@".\Resources\facupbackground.png"))
+            {
+                this.BackgroundImage = myimage;
+            }
+            else
+            {
+                BackColor = Color.FromArgb(145, 16, 13);
+            }
+
+        
+
+    }
 
         private void Form1_Load(object sender, EventArgs e)
         {

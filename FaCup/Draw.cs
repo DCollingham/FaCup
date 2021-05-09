@@ -13,16 +13,18 @@ namespace FaCup
 {
     public partial class Draw : Form
     {
+        //Class Variables
         int LabelIndex = 0;
         List<int> DrawNumbers = new List<int>();
         List<string> Fixtures = new List<string>();
         bool DrawComplete = false;
+
+   
         public Draw()
         {
             InitializeComponent();
-            ClearInfoBox();
-            Image myimage = new Bitmap(@".\Resources\facupbackground.png");
-            this.BackgroundImage = myimage; 
+            DataAccess.LoadsTeamList();
+            PopList();
         }
 
         //Populates a list with integers in range of 1 to list size
@@ -76,12 +78,22 @@ namespace FaCup
             return TeamLabels;
         }
 
-
+        //Removes focus from text box, sets background. Happens before form is displayed.
         private void Draw_Load(object sender, EventArgs e)
         {
-            DataAccess.LoadsTeamList();
+            Image myimage = new Bitmap(@".\Resources\facupbackground.png");
+            if (File.Exists(@".\Resources\facupbackground.png"))
+            {
+                this.BackgroundImage = myimage;
+            }
+            else
+            {
+                BackColor = Color.FromArgb(145, 16, 13);
+            }
+
+            ClearInfoBox();
             txtTeamList.GotFocus += txtTeamList_GotFocus;
-            PopList();
+
         }
 
         //Changes focus away form text box to remove unwanted blinking cursor
@@ -91,15 +103,24 @@ namespace FaCup
         }
 
         //Displays and shuffles teams
-        private void btnShuffle_Click(object sender, EventArgs e)
+        public void btnShuffle_Click(object sender, EventArgs e)
         {
-            txtTeamList.Text = null;
-            TeamModel.TeamList.ShuffleTeams();
-            btnShuffle.Text = "SHUFFLE";
-            DisplayTeamsLeft();
-            btnDrawTeams.Enabled = true;
+            if (DataAccess.FileFound == true)
+            {
+                txtTeamList.Text = null;
+                TeamModel.TeamList.ShuffleTeams();
+                btnShuffle.Text = "SHUFFLE";
+                DisplayTeamsLeft();
+                btnDrawTeams.Enabled = true;
+            }
+            else
+            {
+                btnShuffle.Enabled = false;
+                btnShuffle.Text = "Error";
+            }
         }
-        //Calls method to draw team
+
+        //Displays teams on board and saves if there are no more draws
         private void btnDrawTeams_Click(object sender, EventArgs e)
         {
 
@@ -124,7 +145,7 @@ namespace FaCup
             switch (LabelIndex)
             {
                 case 15:
-                    btnDrawTeams.Text = "Clear";
+                    btnDrawTeams.Text = "Next 16";
                     DisplayClubOnLabel();
                     break;
                 case 16:
@@ -136,8 +157,6 @@ namespace FaCup
                     LabelIndex = 0;
                     btnDrawTeams.Text = "Draw Team";
                     break;
-
-
                 default:
                     DisplayClubOnLabel();
                     break;
@@ -145,7 +164,7 @@ namespace FaCup
             }
         }
 
-        //Assigns the clubs a DrawId and displays then in the left text box
+        //Assigns the clubs a DrawId and displays them in the left text box
         private void DisplayTeamsLeft()
         {
             int counter = 1;

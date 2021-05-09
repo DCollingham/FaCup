@@ -123,6 +123,7 @@ namespace FaCup
             // 
             // lblTeam1
             // 
+            this.lblTeam1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblTeam1.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeam1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTeam1.Location = new System.Drawing.Point(737, 235);
@@ -134,6 +135,7 @@ namespace FaCup
             // 
             // lblTeam2
             // 
+            this.lblTeam2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblTeam2.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeam2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTeam2.Location = new System.Drawing.Point(1113, 235);
@@ -169,6 +171,7 @@ namespace FaCup
             // 
             // lblTeam4
             // 
+            this.lblTeam4.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblTeam4.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeam4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTeam4.Location = new System.Drawing.Point(1113, 281);
@@ -180,6 +183,7 @@ namespace FaCup
             // 
             // lblTeam3
             // 
+            this.lblTeam3.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblTeam3.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeam3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTeam3.Location = new System.Drawing.Point(737, 281);
@@ -203,6 +207,7 @@ namespace FaCup
             // 
             // lblTeam8
             // 
+            this.lblTeam8.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblTeam8.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeam8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTeam8.Location = new System.Drawing.Point(1113, 373);
@@ -214,6 +219,7 @@ namespace FaCup
             // 
             // lblTeam7
             // 
+            this.lblTeam7.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblTeam7.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeam7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTeam7.Location = new System.Drawing.Point(737, 373);
@@ -237,6 +243,7 @@ namespace FaCup
             // 
             // lblTeam6
             // 
+            this.lblTeam6.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblTeam6.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeam6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTeam6.Location = new System.Drawing.Point(1113, 327);
@@ -248,6 +255,7 @@ namespace FaCup
             // 
             // lblTeam5
             // 
+            this.lblTeam5.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblTeam5.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeam5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTeam5.Location = new System.Drawing.Point(737, 327);
@@ -271,6 +279,7 @@ namespace FaCup
             // 
             // lblTeam16
             // 
+            this.lblTeam16.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblTeam16.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeam16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTeam16.Location = new System.Drawing.Point(1113, 557);
@@ -282,6 +291,7 @@ namespace FaCup
             // 
             // lblTeam15
             // 
+            this.lblTeam15.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblTeam15.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeam15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTeam15.Location = new System.Drawing.Point(737, 557);
@@ -305,6 +315,7 @@ namespace FaCup
             // 
             // lblTeam14
             // 
+            this.lblTeam14.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblTeam14.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeam14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTeam14.Location = new System.Drawing.Point(1113, 511);
@@ -316,6 +327,7 @@ namespace FaCup
             // 
             // lblTeam13
             // 
+            this.lblTeam13.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblTeam13.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeam13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTeam13.Location = new System.Drawing.Point(737, 511);
@@ -339,6 +351,7 @@ namespace FaCup
             // 
             // lblTeam12
             // 
+            this.lblTeam12.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblTeam12.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeam12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTeam12.Location = new System.Drawing.Point(1113, 465);
@@ -350,6 +363,7 @@ namespace FaCup
             // 
             // lblTeam11
             // 
+            this.lblTeam11.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblTeam11.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeam11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTeam11.Location = new System.Drawing.Point(737, 465);
@@ -373,6 +387,7 @@ namespace FaCup
             // 
             // lblTeam10
             // 
+            this.lblTeam10.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblTeam10.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeam10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTeam10.Location = new System.Drawing.Point(1113, 419);
@@ -384,6 +399,7 @@ namespace FaCup
             // 
             // lblTeam9
             // 
+            this.lblTeam9.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblTeam9.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeam9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTeam9.Location = new System.Drawing.Point(737, 419);

@@ -29,10 +29,7 @@ namespace FaCup
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.btnDraw = new System.Windows.Forms.Button();
-            this.teamModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.teamModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDraw
@@ -46,10 +43,6 @@ namespace FaCup
             this.btnDraw.UseVisualStyleBackColor = true;
             this.btnDraw.Click += new System.EventHandler(this.btnDraw_Click);
             // 
-            // teamModelBindingSource
-            // 
-            this.teamModelBindingSource.DataSource = typeof(FaCup.TeamModel);
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -61,14 +54,12 @@ namespace FaCup
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FA Cup Draw";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.teamModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Button btnDraw;
-        private System.Windows.Forms.BindingSource teamModelBindingSource;
     }
 }
 
