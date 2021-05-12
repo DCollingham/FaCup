@@ -19,10 +19,11 @@ namespace FaCup
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
             InitializeComponent();
 
-            //Checks if background file exists. #Add optimisation so this check only happens once.
-            Image myimage = new Bitmap(@".\Resources\facupbackground.png");
-            if (File.Exists(@".\Resources\facupbackground.png"))
+            //Checks if background file exists. 
+            string filepath = @".\Resources\facupbackground.png";
+            if (File.Exists(filepath))
             {
+                Image myimage = new Bitmap(filepath);
                 this.BackgroundImage = myimage;
             }
             else

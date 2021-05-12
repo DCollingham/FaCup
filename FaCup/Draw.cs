@@ -81,9 +81,10 @@ namespace FaCup
         //Removes focus from text box, sets background. Happens before form is displayed.
         private void Draw_Load(object sender, EventArgs e)
         {
-            Image myimage = new Bitmap(@".\Resources\facupbackground.png");
-            if (File.Exists(@".\Resources\facupbackground.png"))
+            string filepath = @".\Resources\facupbackground.png";
+            if (File.Exists(filepath))
             {
+                Image myimage = new Bitmap(filepath);
                 this.BackgroundImage = myimage;
             }
             else
@@ -105,19 +106,33 @@ namespace FaCup
         //Displays and shuffles teams
         public void btnShuffle_Click(object sender, EventArgs e)
         {
+            int HowManyTeams = TeamCounter();
             if (DataAccess.FileFound == true)
+
             {
-                txtTeamList.Text = null;
-                TeamModel.TeamList.ShuffleTeams();
-                btnShuffle.Text = "SHUFFLE";
-                DisplayTeamsLeft();
-                btnDrawTeams.Enabled = true;
+                if(HowManyTeams == 32)
+                {
+                    txtTeamList.Text = null;
+                    TeamModel.TeamList.ShuffleTeams();
+                    btnShuffle.Text = "SHUFFLE";
+                    DisplayTeamsLeft();
+                    btnDrawTeams.Enabled = true;
+                } 
+                else if (HowManyTeams != 32)
+                {
+                    MessageBox.Show($"{HowManyTeams} counted! 32 needed");
+                    btnShuffle.Text = "Error";
+                    btnShuffle.Enabled = false;
+                    btnDrawTeams.Text = "Error";
+                }
             }
-            else
-            {
-                btnShuffle.Enabled = false;
-                btnShuffle.Text = "Error";
-            }
+   
+            else if (DataAccess.FileFound == false)
+                {
+                    btnShuffle.Text = "Error";
+                    btnShuffle.Enabled = false;
+                    btnDrawTeams.Text = "Error";
+                }
         }
 
         //Displays teams on board and saves if there are no more draws
@@ -181,6 +196,17 @@ namespace FaCup
             lblInfoClub.Text = "";
             lblInfoLevel.Text = "";
             lblInfoNumber.Text = "";
+        }
+
+        private int TeamCounter()
+        {
+            int counter = 0;
+            foreach (var team in TeamModel.TeamList)
+            {
+                counter++;
+            }
+            return counter;
+
         }
 
     }

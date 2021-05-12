@@ -34,13 +34,16 @@ namespace FaCup
             // 
             // btnDraw
             // 
-            this.btnDraw.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDraw.Location = new System.Drawing.Point(733, 435);
+            this.btnDraw.BackColor = System.Drawing.Color.White;
+            this.btnDraw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDraw.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDraw.ForeColor = System.Drawing.Color.DimGray;
+            this.btnDraw.Location = new System.Drawing.Point(725, 426);
             this.btnDraw.Name = "btnDraw";
-            this.btnDraw.Size = new System.Drawing.Size(168, 49);
+            this.btnDraw.Size = new System.Drawing.Size(207, 52);
             this.btnDraw.TabIndex = 1;
             this.btnDraw.Text = "Fourth Round Draw";
-            this.btnDraw.UseVisualStyleBackColor = true;
+            this.btnDraw.UseVisualStyleBackColor = false;
             this.btnDraw.Click += new System.EventHandler(this.btnDraw_Click);
             // 
             // MainMenu
