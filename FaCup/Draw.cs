@@ -17,13 +17,15 @@ namespace FaCup
         int LabelIndex = 0;
         List<int> DrawNumbers = new List<int>();
         List<string> Fixtures = new List<string>();
+        List<TeamModel> TeamList = new List<TeamModel>();
         bool DrawComplete = false;
 
    
         public Draw()
         {
+            var file = new FileInfo(@".\resources\finalteams.xlsx");
             InitializeComponent();
-            DataAccess.LoadsTeamList();
+            DataAccess.LoadRemainingTeams(file, TeamList, false);
             PopList();
         }
 
@@ -42,7 +44,7 @@ namespace FaCup
             int index = Utility.GetDrawId(DrawNumbers);
             List<Label> TeamLabels = GetTeamLabels();
             //Loops through Labels to display Team Name
-            TeamLabels[LabelIndex].Text = TeamModel.TeamList[index].TeamName.ToUpper();
+            TeamLabels[LabelIndex].Text = TeamList[index].TeamName.ToUpper();
             DisplayInfoBox(index);
             SaveFixture(index);
             LabelIndex++;
@@ -50,15 +52,15 @@ namespace FaCup
 
         private void DisplayInfoBox(int index)
         {
-            lbInfolLeauge.Text = "League: " + TeamModel.TeamList[index].LeaugeName;
-            lblInfoClub.Text = "Club: " + TeamModel.TeamList[index].TeamName;
-            lblInfoLevel.Text = "Club Level: " + TeamModel.TeamList[index].LeaugeId.ToString();
-            lblInfoNumber.Text = "Drawn Number: " + TeamModel.TeamList[index].DrawId.ToString();
+            lbInfolLeauge.Text = "League: " + TeamList[index].LeaugeName;
+            lblInfoClub.Text = "Club: " + TeamList[index].TeamName;
+            lblInfoLevel.Text = "Club Level: " + TeamList[index].LeaugeId.ToString();
+            lblInfoNumber.Text = "Drawn Number: " + TeamList[index].DrawId.ToString();
         }
 
         private void SaveFixture(int index)
         {
-            Fixtures.Add(TeamModel.TeamList[index].TeamName);
+            Fixtures.Add(TeamList[index].TeamName);
         }
 
 
@@ -113,21 +115,21 @@ namespace FaCup
                 if(HowManyTeams == 32)
                 {
                     txtTeamList.Text = null;
-                    TeamModel.TeamList.ShuffleTeams();
+                    TeamList.ShuffleTeams();
                     btnShuffle.Text = "SHUFFLE";
                     DisplayTeamsLeft();
                     btnDrawTeams.Enabled = true;
                 } 
-                else if (HowManyTeams != 32)
+                else
                 {
-                    MessageBox.Show($"{HowManyTeams} counted! 32 needed");
+                    MessageBox.Show($"Error: {HowManyTeams} teams currently in draw but 32 teams are needed.");
                     btnShuffle.Text = "Error";
                     btnShuffle.Enabled = false;
                     btnDrawTeams.Text = "Error";
                 }
             }
    
-            else if (DataAccess.FileFound == false)
+            else
                 {
                     btnShuffle.Text = "Error";
                     btnShuffle.Enabled = false;
@@ -183,7 +185,7 @@ namespace FaCup
         private void DisplayTeamsLeft()
         {
             int counter = 1;
-            foreach (var team in TeamModel.TeamList)
+            foreach (var team in TeamList)
             {
                 team.DrawId = counter;
                 txtTeamList.Text += counter + ") " + team.TeamName + Environment.NewLine;
@@ -201,7 +203,7 @@ namespace FaCup
         private int TeamCounter()
         {
             int counter = 0;
-            foreach (var team in TeamModel.TeamList)
+            foreach (var team in TeamList)
             {
                 counter++;
             }
