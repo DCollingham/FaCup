@@ -14,53 +14,53 @@ namespace FaCup
     public partial class Draw : Form
     {
         //Class Variables
-        int LabelIndex = 0;
-        List<int> DrawNumbers = new List<int>();
-        List<string> Fixtures = new List<string>();
-        List<TeamModel> TeamList = new List<TeamModel>();
-        bool DrawComplete = false;
+        int labelIndex = 0;
+        List<int> drawNumbers = new List<int>();
+        List<string> fixtures = new List<string>();
+        List<TeamModel> teamList = new List<TeamModel>();
+        bool drawComplete = false;
 
-   
+        //Gets teams from excel and populates list
         public Draw()
         {
             var file = new FileInfo(@".\resources\finalteams.xlsx");
             InitializeComponent();
-            DataAccess.LoadRemainingTeams(file, TeamList, false);
+            DataAccess.LoadRemainingTeams(file, teamList, false);
             PopList();
         }
 
-        //Populates a list with integers in range of 1 to list size
+        //Populates a list with integers in range of 0-31 used for indexing
         private void PopList()
         {
             for (int i = 0; i < 32; i++)
             {
-                DrawNumbers.Add(i);
+                drawNumbers.Add(i);
             }
         }
 
-
+        //Displays club on label then increases label index
         private void DisplayClubOnLabel()
         {
-            int index = Utility.GetDrawId(DrawNumbers);
+            int index = Utility.GetDrawId(drawNumbers);
             List<Label> TeamLabels = GetTeamLabels();
             //Loops through Labels to display Team Name
-            TeamLabels[LabelIndex].Text = TeamList[index].TeamName.ToUpper();
+            TeamLabels[labelIndex].Text = teamList[index].TeamName.ToUpper();
             DisplayInfoBox(index);
             SaveFixture(index);
-            LabelIndex++;
+            labelIndex++;
         }
-
+        //Displays team info in infobox
         private void DisplayInfoBox(int index)
         {
-            lbInfolLeauge.Text = "League: " + TeamList[index].LeaugeName;
-            lblInfoClub.Text = "Club: " + TeamList[index].TeamName;
-            lblInfoLevel.Text = "Club Level: " + TeamList[index].LeaugeId.ToString();
-            lblInfoNumber.Text = "Drawn Number: " + TeamList[index].DrawId.ToString();
+            lbInfolLeauge.Text = "League: " + teamList[index].LeaugeName;
+            lblInfoClub.Text = "Club: " + teamList[index].TeamName;
+            lblInfoLevel.Text = "Club Level: " + teamList[index].LeaugeId.ToString();
+            lblInfoNumber.Text = "Drawn Number: " + teamList[index].DrawId.ToString();
         }
-
+        //Saves fixture to file
         private void SaveFixture(int index)
         {
-            Fixtures.Add(TeamList[index].TeamName);
+            fixtures.Add(teamList[index].TeamName);
         }
 
 
@@ -68,16 +68,16 @@ namespace FaCup
         private List<Label> GetTeamLabels()
         {
             List<Label> lbls = this.Controls.OfType<Label>().ToList();
-            List<Label> TeamLabels = new List<Label>();
+            List<Label> teamLabels = new List<Label>();
             foreach (var label in lbls)
             {
                 if (label.Tag != null && label.Tag.ToString() == "LabelTeams")
                 {
-                    TeamLabels.Add(label);
+                    teamLabels.Add(label);
                 }
             }
-            TeamLabels.Reverse();
-            return TeamLabels;
+            teamLabels.Reverse();
+            return teamLabels;
         }
 
         //Removes focus from text box, sets background. Happens before form is displayed.
@@ -108,27 +108,27 @@ namespace FaCup
         //Displays and shuffles teams
         public void btnShuffle_Click(object sender, EventArgs e)
         {
-            int HowManyTeams = TeamCounter();
+            int howManyTeams = TeamCounter();
             if (DataAccess.FileFound == true)
 
             {
-                if(HowManyTeams == 32)
+                if(howManyTeams == 32)
                 {
                     txtTeamList.Text = null;
-                    TeamList.ShuffleTeams();
+                    teamList.ShuffleTeams();
                     btnShuffle.Text = "SHUFFLE";
                     DisplayTeamsLeft();
                     btnDrawTeams.Enabled = true;
                 } 
                 else
                 {
-                    MessageBox.Show($"Error: {HowManyTeams} teams currently in draw but 32 teams are needed.");
+                    MessageBox.Show($"Error: {howManyTeams} teams currently in draw but 32 teams are needed.");
                     btnShuffle.Text = "Error";
                     btnShuffle.Enabled = false;
                     btnDrawTeams.Text = "Error";
                 }
             }
-   
+            //if FileFound = false
             else
                 {
                     btnShuffle.Text = "Error";
@@ -140,26 +140,29 @@ namespace FaCup
         //Displays teams on board and saves if there are no more draws
         private void btnDrawTeams_Click(object sender, EventArgs e)
         {
-
-            DisplayBoard();
-            btnShuffle.Enabled = false;
-            if(DrawNumbers.Count() == 0)
+            if (drawComplete == false)
             {
-                btnDrawTeams.Text = "Save";
-                Utility.FixtureToFile(Fixtures);
-                DrawComplete = true;
-
+                DisplayBoard();
+                btnShuffle.Enabled = false;
+                if (drawNumbers.Count() == 0)
+                {
+                    btnDrawTeams.Text = "Save";
+                    drawComplete = true;
+                }
             }
-
+            else
+            {
+                Utility.FixtureToFile(fixtures);
+            }
         }
-
+        //Checks certain cases and displays teams on board
         private void DisplayBoard()
         {
-            if (DrawComplete == false)
+            if (drawComplete == false)
             {
 
    
-            switch (LabelIndex)
+            switch (labelIndex)
             {
                 case 15:
                     btnDrawTeams.Text = "Next 16";
@@ -171,7 +174,7 @@ namespace FaCup
                     {
                         label.Text = null;
                     }
-                    LabelIndex = 0;
+                    labelIndex = 0;
                     btnDrawTeams.Text = "Draw Team";
                     break;
                 default:
@@ -185,13 +188,14 @@ namespace FaCup
         private void DisplayTeamsLeft()
         {
             int counter = 1;
-            foreach (var team in TeamList)
+            foreach (var team in teamList)
             {
                 team.DrawId = counter;
                 txtTeamList.Text += counter + ") " + team.TeamName + Environment.NewLine;
                 counter++;
             }
         }
+        //Clears the infobox
         private void ClearInfoBox()
         {
             lbInfolLeauge.Text = "";
@@ -199,11 +203,11 @@ namespace FaCup
             lblInfoLevel.Text = "";
             lblInfoNumber.Text = "";
         }
-
+        //Counts the number of teams
         private int TeamCounter()
         {
             int counter = 0;
-            foreach (var team in TeamList)
+            foreach (var team in teamList)
             {
                 counter++;
             }

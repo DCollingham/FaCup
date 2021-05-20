@@ -14,7 +14,7 @@ namespace FaCup
         public bool InCup { get; set; }
         public bool KnockedOut { get; set; }
         public int DrawId { get; set; }
-        //public static List<TeamModel> TeamList { get; set; }
+
     }
 
     }
