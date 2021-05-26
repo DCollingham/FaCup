@@ -17,7 +17,8 @@ namespace FaCup
 
 
         //Adds Teams from excel file to list of Team Model
-
+        //Excel data access based on video tutorial on youtube
+        //https://www.youtube.com/watch?v=j3S3aI8nMeE
         public static async void LoadRemainingTeams(FileInfo file, List<TeamModel>argTeamList, bool argKnockedOut)
         {
             if (File.Exists(file.ToString()))

@@ -35,17 +35,13 @@ namespace FaCup
 
     }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
-        }
 
+        //Opens fourth round draw page
         private void btnDraw_Click(object sender, EventArgs e)
         {
-            //this.Hide();
             Draw draw = new Draw();
             draw.ShowDialog();
-
         }
     }
     }
